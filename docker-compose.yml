@@ -1,0 +1,6 @@
+version: '2'
+services:
+  rethinkdb:
+    image: "rethinkdb:latest"
+    volumes:
+    - /data
