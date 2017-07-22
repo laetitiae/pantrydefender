@@ -2,5 +2,5 @@ import time
 
 
 while True:
-    print("Test")
+    print("Test", flush=True)
     time.sleep(1)
