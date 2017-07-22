@@ -2,6 +2,8 @@ version: '2'
 services:
   listsrv:
     build: listsrv
+  modsrv:
+    build: modsrv
   rethinkdb:
     image: "rethinkdb:latest"
     volumes:
