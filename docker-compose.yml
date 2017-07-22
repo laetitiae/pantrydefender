@@ -1,5 +1,7 @@
 version: '2'
 services:
+  listsrv:
+    build: listsrv
   rethinkdb:
     image: "rethinkdb:latest"
     volumes:
