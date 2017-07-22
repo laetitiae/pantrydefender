@@ -1,0 +1,14 @@
+version: '2'
+services:
+  userapp:
+    build: userapp
+    ports:
+    - "3000:3000"
+  listsrv:
+    build: listsrv
+  modsrv:
+    build: modsrv
+  rethinkdb:
+    image: "rethinkdb:latest"
+    volumes:
+    - /data
