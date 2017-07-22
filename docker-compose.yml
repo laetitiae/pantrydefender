@@ -4,6 +4,10 @@ services:
     build: userapp
     ports:
     - "3000:3000"
+  controllersrv:
+    build: controllersrv
+    ports:
+    - "3001:3001"
   listsrv:
     build: listsrv
   modsrv:
