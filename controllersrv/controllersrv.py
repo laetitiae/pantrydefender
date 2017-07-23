@@ -4,7 +4,7 @@ from aiohttp import web
 from oauth2client import client, crypt
 import aiohttp
 
-CLIENT_ID = "109000862034-kn654663dt4jg7hpc9ugj5ldddhousl7.apps.googleusercontent.com"
+CLIENT_ID = "109000862034-6l8ocpbmpkn3rj2535uajioe4uq9mfes.apps.googleusercontent.com"
 
 
 async def websocket_handler(request):
