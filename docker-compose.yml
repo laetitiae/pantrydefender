@@ -1,32 +1,36 @@
-frontend:
-  image: "nginx:alpine"
-  ports:
-  - "8080:8080"
-  links:
-  - userapp
-  - controllersrv
-  volumes:
-  - ./site.conf:/etc/nginx/conf.d/site.conf
-userapp:
-  build: userapp
-  ports:
-  - "3000"
-controllersrv:
-  build: controllersrv
-  ports:
-  - "3001"
-  links:
-  - listsrv
-  - modsrv
-listsrv:
-  build: listsrv
-  links:
-  - rethinkdb
-modsrv:
-  build: modsrv
-  links:
-  - rethinkdb
-rethinkdb:
-  image: "rethinkdb:latest"
-  volumes:
-  - /data
+version: "3"
+services:
+  frontend:
+    image: "nginx:alpine"
+    ports:
+    - "8080:8080"
+    links:
+    - userapp
+    - controllersrv
+    volumes:
+    - ./site.conf:/etc/nginx/conf.d/site.conf
+  userapp:
+    build: userapp
+    expose:
+    - "3000"
+  controllersrv:
+    build: controllersrv
+    expose:
+    - "3001"
+    links:
+    - listsrv
+    - modsrv
+  listsrv:
+    build: listsrv
+    links:
+    - rethinkdb
+  modsrv:
+    build: modsrv
+    links:
+    - rethinkdb
+  rethinkdb:
+    image: "rethinkdb:latest"
+    volumes:
+    - /data
+    ports:
+    - "8090:8080"
