@@ -36,9 +36,12 @@ class App extends Component {
   };
 
   loginSuccess(response) {
+    console.log("Loggin phase 1 SUCCESS: " + JSON.stringify(response));
+
+    var controllerUrl = ((window.location.protocol === "https:") ? "wss://" : "ws://") + window.location.host + "/controller";
     window.login = response;
 
-    this.ws = new WebSocket('ws://localhost:3001/controller');
+    this.ws = new WebSocket(controllerUrl);
     this.ws.onmessage = evt => {
       var msg = JSON.parse(evt.data);
       if (msg.error) {
@@ -73,6 +76,7 @@ class App extends Component {
   };
 
   loginFailure(response) {
+    console.log("Loggin phase 1 FAILED: " + JSON.stringify(response));
     this.setState({loggedIn: false});
   };
 
@@ -86,7 +90,7 @@ class App extends Component {
         </p>
         { !this.state.loggedIn &&
           <GoogleLogin
-              clientId="109000862034-kn654663dt4jg7hpc9ugj5ldddhousl7.apps.googleusercontent.com"
+              clientId="109000862034-6l8ocpbmpkn3rj2535uajioe4uq9mfes.apps.googleusercontent.com"
               buttonText="Login"
               onSuccess={this.loginSuccess}
               onFailure={this.loginFailure}
