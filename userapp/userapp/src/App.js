@@ -38,7 +38,7 @@ class App extends Component {
   loginSuccess(response) {
     window.login = response;
 
-    this.ws = new WebSocket('ws://localhost:3001/controller');
+    this.ws = new WebSocket('/controller');
     this.ws.onmessage = evt => {
       var msg = JSON.parse(evt.data);
       if (msg.error) {

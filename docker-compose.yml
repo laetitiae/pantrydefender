@@ -1,11 +1,20 @@
+frontend:
+  image: "nginx:alpine"
+  ports:
+  - "8080:8080"
+  links:
+  - userapp
+  - controllersrv
+  volumes:
+  - ./site.conf:/etc/nginx/conf.d/site.conf
 userapp:
   build: userapp
   ports:
-  - "3000:3000"
+  - "3000"
 controllersrv:
   build: controllersrv
   ports:
-  - "3001:3001"
+  - "3001"
   links:
   - listsrv
   - modsrv
