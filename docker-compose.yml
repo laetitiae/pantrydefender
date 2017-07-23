@@ -1,18 +1,23 @@
-version: '2'
-services:
-  userapp:
-    build: userapp
-    ports:
-    - "3000:3000"
-  controllersrv:
-    build: controllersrv
-    ports:
-    - "3001:3001"
-  listsrv:
-    build: listsrv
-  modsrv:
-    build: modsrv
-  rethinkdb:
-    image: "rethinkdb:latest"
-    volumes:
-    - /data
+userapp:
+  build: userapp
+  ports:
+  - "3000:3000"
+controllersrv:
+  build: controllersrv
+  ports:
+  - "3001:3001"
+  links:
+  - listsrv
+  - modsrv
+listsrv:
+  build: listsrv
+  links:
+  - rethinkdb
+modsrv:
+  build: modsrv
+  links:
+  - rethinkdb
+rethinkdb:
+  image: "rethinkdb:latest"
+  volumes:
+  - /data
