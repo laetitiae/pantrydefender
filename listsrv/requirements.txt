@@ -1,2 +1,3 @@
 aiohttp
+environconfig
 rethinkdb
